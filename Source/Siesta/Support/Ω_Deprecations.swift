@@ -10,7 +10,7 @@ import Foundation
 
 extension Service
     {
-    @available(*, deprecated: 0.99, message: "Use `standardTransformers:` instead of `useDefaultTransformers:`. Choices are `[.json, .text, .image]`; use [] for none")
+    @available(*, deprecated: 1.3, message: "Use `standardTransformers:` instead of `useDefaultTransformers:`. Choices are `[.json, .text, .image]`; use [] for none")
     public convenience init(
             baseURL: URLConvertible? = nil,
             useDefaultTransformers: Bool,
@@ -32,3 +32,11 @@ extension Request
 
 @available(*, deprecated: 1.4, renamed: "ResponseContentTransformer.InputTypeMismatchAction")
 public typealias InputTypeMismatchAction = ResponseContentTransformer<Any,Any>.InputTypeMismatchAction
+
+@available(*, deprecated: 1.4, renamed: "logMessageHandler")
+public var logger: (LogCategory, String) -> Void
+    {
+    get { return logMessageHandler }
+    set { logMessageHandler = newValue }
+    }
+
